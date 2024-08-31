@@ -1,0 +1,59 @@
+{
+  "name": "node-mjs-template",
+  "version": "1.0.0",
+  "description": "node package esm example",
+  "main": "src/index.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=./lcov.info",
+    "build": "father build",
+    "lint": "eslint . --config .eslintrc.json",
+    "lint:fix": "eslint . --fix",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "prepublishOnly": "npm run build",
+    "pub": "npm publish --registry https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^5.0.0",
+    "eslint": "^8.0.0",
+    "husky": "^9.1.5",
+    "lcov": "^1.16.0",
+    "lint-staged": "^15.2.9"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{.ts,.tsx}": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hubcarl/node-mjs-template"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "homepage": "https://github.com/hubcarl",
+  "author": "hubcarl",
+  "license": "MIT",
+  "files": [
+    "src",
+    "test",
+    ".vscode",
+    ".eslintrc.json",
+    ".eslintignore",
+    ".gitignore",
+    "README.md",
+    "yarn.lock"
+  ]
+}
